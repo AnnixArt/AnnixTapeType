@@ -1,11 +1,11 @@
 # 🌌 AnnixTypeTape– Application d'entraînement à la frappe
 
-**AnnixTypeTape** est une application web que j'ai développée et **implémentée** dans le but d'aider les utilisateurs à améliorer leur vitesse de frappe ⌨️ et leur précision 🎯 grâce à une interface moderne, immersive et responsive.
+**AnnixTypeTape** est une application web que j'ai développée et **implémentée** dans le but d'aider les utilisateurs à améliorer leur vitesse de frappe ⌨️ et leur précision 🎯 grâce à une interface moderne, immersive et responsive woow cool 🤩.
 
 ## 🚀 Fonctionnalités principales
 
 - 🎛️ **Sélection de mode** : PC / Tablette / Téléphone
-- 🔁 **Phrases générées aléatoirement** pour s'exercer en continu
+- 🔁 **Phrases et mots générées aléatoirement** pour s'exercer en continu
 - 📊 **Statistiques en temps réel** : mots par minute, précision, nombre de phrases
 - ⌨️ **Clavier virtuel animé** qui réagit à la frappe
 - 🌌 **Design moderne** avec fond galaxie et effet professionnel
