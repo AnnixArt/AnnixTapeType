@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AninixType | Entraînement de frappe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- 🔵 Bouton À propos -->
+  <button onclick="window.location.href='apropos.html'" style="position: fixed; top: 20px; right: 20px; padding: 5px 3px; background-color: #00ffcc; border: none; border-radius: 10px; color: #000; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px #00ffcc;">
+    📘 À propos
+  </button>
+    <header>
+      <h1>AnnixTapeType</h1>
+      <p>Ave <strong>Aninix-Art</strong> – Apprenez à taper vite et sans faute</p>
+     Mode <select id="modeSelector" onchange="changeMode()">
+        <option value="pc">PC</option>
+        <option value="tablet">Tablette</option>
+        <option value="phone">Téléphone</option>
+      </select>
+    </header>
+
+    <main>
+      <div id="phrase" class="phrase"></div>
+      <input type="text" id="input" autocomplete="off" placeholder="Tapez ici..." />
+      <button id="refresh" style="background: deeppink">🔄 Actualiser</button>
+      <div class="stats">
+        <span>🚀 Vitesse : <span id="wpm">0</span> MPM</span>
+        <span>🎯 Précision : <span id="accuracy">0</span>%</span>
+        <span>🔁 Phrases : <span id="count">0</span></span>
+      </div>
+      <div id="keyboard" class="keyboard"></div>
+    </main>
+
+    <footer>
+      &copy; 2025 <strong>Aninix-Art</strong> – Tous droits réservés
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+
+
+
+<style type="text/css">
+
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+
+background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+/*background-size: cover;
+background-size: cover;*/
+color: #f0f0f0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.app {
+  max-width: 900px;
+  width: 95%;
+  text-align: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+header h1 {
+  font-size: 2.5em;
+  color: #00ffcc;
+  margin-bottom: 0;
+}
+
+header p {
+  color: #ccc;
+  margin-top: 5px;
+}
+
+
+/* Style du menu déroulant */
+select {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  background-color: #00bfff;
+  color: white;
+  cursor: pointer;
+}
+
+
+select:focus {
+  outline: none;
+}
+
+
+
+/* Mode téléphone */
+.phone {
+  width: 95%;
+  max-width: 400px;
+  font-size: 1em;
+}
+
+/* Mode PC */
+.pc {
+  width: 95%;
+  max-width: 900px;
+  font-size: 1.5em;
+}
+
+.phrase {
+  font-size: 1.5em;
+  margin: 25px 0;
+  font-weight: bold;
+  padding: 20px;
+  background-color: #ffffff10;
+  border-radius: 12px;
+  min-height: 80px;
+}
+
+.phrase span.correct {
+  color: #00ffcc;
+}
+
+.phrase span.incorrect {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff20;
+  color: white;
+  margin-top: 10px;
+}
+
+input:focus {
+  outline: 2px solid #00ffcc;
+}
+
+button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #00bfff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+button:hover {
+  background-color: deeppink;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.keyboard {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  justify-items: center;
+}
+
+.key {
+  background-color: #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: background-color 0.1s ease;
+}
+
+.key.active {
+  background-color: #00ffcc;
+  color: #111;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+
+
+</style>
+
+
+
+
+
+<script type="text/javascript">const phrases = [
+  "Le soleil brille fort aujourd'hui.",
+  "Je bois un thé chaud en hiver.",
+  "Les enfants jouent dans le jardin.",
+  "Il faut écrire sans faire d’erreurs.",
+  "Le chat noir saute sur le lit.",
+  "Nous partons en voyage demain matin.",
+  "La pluie tombe doucement ce soir.",
+  "Elle lit un bon roman français.",
+  "Apprendre à taper vite est utile.",
+  "Le silence est parfois une réponse."
+];
+
+const phraseEl = document.getElementById("phrase");
+const inputEl = document.getElementById("input");
+const wpmEl = document.getElementById("wpm");
+const accuracyEl = document.getElementById("accuracy");
+const countEl = document.getElementById("count");
+const refreshBtn = document.getElementById("refresh");
+const keyboardEl = document.getElementById("keyboard");
+
+let currentPhrase = "";
+let startTime = null;
+let correctChars = 0;
+let totalChars = 0;
+let phrasesTyped = 0;
+
+function renderKeyboard() {
+  const keys = "azertyuiopqsdfghjklmwxcvbnçéèàù,.;!?/:|'".split("");
+  keyboardEl.innerHTML = "";
+  keys.forEach(k => {
+    const keyEl = document.createElement("div");
+    keyEl.classList.add("key");
+    keyEl.id = "key-" + k;
+    keyEl.textContent = k;
+    keyboardEl.appendChild(keyEl);
+  });
+}
+
+function highlightKeyboard(char) {
+  const id = "key-" + char;
+  const key = document.getElementById(id);
+  if (key) {
+    key.classList.add("active");
+    setTimeout(() => key.classList.remove("active"), 100);
+  }
+}
+
+function setNewPhrase() {
+  currentPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+  displayPhrase("");
+  inputEl.value = "";
+  startTime = new Date();
+}
+
+function displayPhrase(input) {
+  phraseEl.innerHTML = "";
+  for (let i = 0; i < currentPhrase.length; i++) {
+    const span = document.createElement("span");
+    span.textContent = currentPhrase[i];
+    if (input[i]) {
+      span.className = input[i] === currentPhrase[i] ? "correct" : "incorrect";
+    }
+    phraseEl.appendChild(span);
+  }
+}
+
+function updateStats(input) {
+  const timeElapsed = (new Date() - startTime) / 1000 / 60;
+  const words = input.trim().split(/\s+/).length;
+  const wpm = Math.round(correctChars / 5 / timeElapsed);
+  const accuracy = totalChars ? Math.round((correctChars / totalChars) * 100) : 0;
+
+  wpmEl.textContent = isNaN(wpm) ? 0 : wpm;
+  accuracyEl.textContent = isNaN(accuracy) ? 0 : accuracy;
+  countEl.textContent = phrasesTyped;
+}
+
+inputEl.addEventListener("input", () => {
+  const input = inputEl.value;
+  displayPhrase(input);
+
+  const lastChar = input.slice(-1);
+  if (lastChar.match(/[a-zA-Z0-9,.;!?çéèàù ]/)) {
+    highlightKeyboard(lastChar);
+  }
+
+  totalChars = input.length;
+  correctChars = 0;
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] === currentPhrase[i]) {
+      correctChars++;
+    }
+  }
+
+  updateStats(input);
+
+  if (input === currentPhrase) {
+    phrasesTyped++;
+    setTimeout(setNewPhrase, 300);
+  }
+});
+
+refreshBtn.addEventListener("click", () => {
+  setNewPhrase();
+});
+
+window.onload = () => {
+  renderKeyboard();
+  setNewPhrase();
+  inputEl.focus();
+};
+
+
+// Fonction pour changer le mode de l'application (PC, Tablette, Téléphone)
+function changeMode() {
+  const mode = document.getElementById("modeSelector").value;
+  const app = document.querySelector(".app");
+
+  // Supprimer toutes les classes de taille existantes
+  app.classList.remove("tablet", "phone", "pc");
+
+  // Ajouter la classe correspondant au mode sélectionné
+  app.classList.add(mode);
+}
+
+
+
+
+
+</script>

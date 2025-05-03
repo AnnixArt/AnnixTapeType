@@ -1,0 +1,174 @@
+
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+
+background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+color: #f0f0f0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.app {
+  max-width: 900px;
+  width: 95%;
+  text-align: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+header h1 {
+  font-size: 2.5em;
+  color: #00ffcc;
+  margin-bottom: 0;
+}
+
+header p {
+  color: #ccc;
+  margin-top: 5px;
+}
+
+
+/* Style du menu déroulant */
+select {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  background-color: #00bfff;
+  color: white;
+  cursor: pointer;
+}
+
+
+select:focus {
+  outline: none;
+}
+
+
+
+/* Mode téléphone */
+.phone {
+  width: 95%;
+  max-width: 400px;
+  font-size: 1em;
+}
+
+/* Mode PC */
+.pc {
+  width: 95%;
+  max-width: 900px;
+  font-size: 1.5em;
+}
+
+.phrase {
+  font-size: 1.5em;
+  margin: 25px 0;
+  font-weight: bold;
+  padding: 20px;
+  background-color: #ffffff10;
+  border-radius: 12px;
+  min-height: 80px;
+}
+
+.phrase span.correct {
+  color: #00ffcc;
+}
+
+.phrase span.incorrect {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffffff20;
+  color: white;
+  margin-top: 10px;
+}
+
+input:focus {
+  outline: 2px solid #00ffcc;
+}
+
+button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #00bfff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+button:hover {
+  background-color: deeppink;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.keyboard {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  justify-items: center;
+}
+
+.key {
+  background-color: #333;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: background-color 0.1s ease;
+}
+
+.key.active {
+  background-color: #00ffcc;
+  color: #111;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+
+
+
+  .apropos-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none; 
+      font-family: sans-serif;
+    }
+    .apropos-btn:hover {
+      background-color: #00ddbb;
+    }
